@@ -1,12 +1,20 @@
 html, body
 {
     height: 100%;
+    font-family: 'Bebas Neue', cursive;
+}
+
+p {
+    margin: 0;
+    padding: 0;
 }
 
 .container-fluid {
-    height: 100%;
-    padding: 0;
-    background-color: #FFBDF8;
+    padding: 5px;
+    
+    background: linear-gradient(302deg, #FA70AB, #F859A1, #FC499E);
+    background-size: 1200% 1200%;
+    animation: GradientSwirl 5s ease infinite;
 }
 
 .navbar-brand {
@@ -28,7 +36,7 @@ html, body
     height: 100%;
     float: left;
 
-    padding: 2px;
+    padding: 5px;
 }
 .grid-cell {
     width: 100%;
@@ -37,10 +45,10 @@ html, body
     background-color: #7C79EF;
     float: left;
 
-    border-radius: 25px;
+    border-radius: 3vmin;
     border: solid 5px #CC5BBF;
 
-    font-size: 7vw;
+    font-size: 8vmin;
     text-align: center;
 
     -webkit-touch-callout: none; /* iOS Safari */
@@ -56,10 +64,94 @@ html, body
     background-color: #FFA61F;
 }
 
-.fg-blue {
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.logo {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.logo-fall {
+    color: #3FDBDA;
+    font-size: 38px;
+
+    line-height: 28px;
+}
+
+.logo-guys {
+    color: #F63BA2;
+    font-size: 35px;
+
+    line-height: 28px;
+}
+
+.logo-perfect-match {
+    color: white;
+    font-size: 12px;
+
+    line-height: 12px;
+}
+
+.footer {
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+
+    padding: 6px 0 3px 0;
+
+    color: white;
+}
+
+.c-blue {
     color: #3FDBDA;
 }
 
-.fg-pink {
+.c-pink {
     color: #F63BA2;
+}
+
+@keyframes GradientSwirl { 
+    0% { background-position: 15% 0%; }
+    50% { background-position: 86% 100%; }
+    100% { background-position: 15% 0%; }
+}
+
+.btn {
+    border-radius: 10px;
+    padding: .4rem .5rem .1rem .5rem;
+    box-shadow: none;
+}
+
+.btn:active,
+.btn:focus {
+    box-shadow: none;
+}
+
+.btn-blue {
+    color: white;
+    background-color: #3FDBDA;
+}
+.btn-blue:hover {
+    color: #3FDBDA;
+    background-color: white;
+}
+
+.btn-pink {
+    color: white;
+    background-color: #F63BA2;
+}
+.btn-pink:hover {
+    color: #F63BA2;
+    background-color: white;
+}
+
+.btn-picker-selected {
+    background-color: #f63ba2 !important;
+    border-color: #3fdbda !important;
 }

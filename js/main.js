@@ -8,29 +8,102 @@ var tiles = [
     { emjoi: "🍉", color: "#F6C741", highlight: "#FCFD41" }
 ];
 
-$(document).ready(function () {
-    $('.grid-cell').on('click', function () {
-        var index = $(this).data('index');
-        if (!index) {
-            index = 0;
-        }
+var pickerMode = "PICKER";
+var toggleMode = "TOGGLE";
 
-        index++;
+var mode = toggleMode;
 
-        if (index >= tiles.length) {
-            index = 0;
-        }
+var currentPickerIndex = 0;
 
-        setCell($(this), index);
-    });
+function main() {
+    initEvents();
+    initPickerMode();
+    initAnimations();
+}
 
-    $('.reset').on('click', function () {
-        var cells = $('.grid-cell');
-        for (var i = 0; i < cells.length; i++) {
-            setCell($(cells[i]), 0);
-        }
-    });
-});
+function initEvents() {
+    $('.grid-cell').on('click', onGridCellClicked);
+    $('.toggle-mode').on('click', onToggleModeClicked);
+    $('.reset').on('click', onResetClicked);
+}
+
+function initPickerMode() {
+    for (var i = 1; i < tiles.length; i++) {
+        $('.picker-selection').append('<a class="btn btn-sm btn-primary btn-picker ml-1" href="#" data-index="' + i +'" style="background-color: ' + tiles[i].color + ';border-color: ' + tiles[i].highlight + '">' + tiles[i].emjoi + '</a>');
+    }
+
+    $('.btn-picker').on('click', onPickerTileClicked);
+}
+
+function initAnimations() {
+    let deg = 0;
+    setInterval(function() {
+      deg < 360 ? deg++ : deg = 0;
+    }, 5);
+}
+
+function onGridCellClicked() {
+    if (mode == toggleMode) {
+        onGridCellClickedToggle($(this));
+    }
+    else if (mode == pickerMode) {
+        onGridCellClickedPicker($(this));
+    }
+    else {
+        console.log("Mode not configured.");
+    }
+}
+
+function onGridCellClickedToggle(cell) {
+    var index = $(cell).data('index');
+    if (!index) {
+        index = 0;
+    }
+
+    index++;
+
+    if (index >= tiles.length) {
+        index = 0;
+    }
+
+    setCell($(cell), index);
+}
+
+function onGridCellClickedPicker(cell) {
+    setCell($(cell), currentPickerIndex);
+}
+
+function onToggleModeClicked() {
+    if (mode == pickerMode) {
+        mode = toggleMode;
+    }
+    else {
+        mode = pickerMode;
+    }
+
+    if (mode == pickerMode) {
+        $('.picker-selection').show();
+        $('.toggle-mode').html('Toggle Mode');
+    }
+    else {
+        $('.picker-selection').hide();
+        $('.toggle-mode').html('Picker Mode');
+    }
+}
+
+function onResetClicked() {
+    var cells = $('.grid-cell');
+    for (var i = 0; i < cells.length; i++) {
+        setCell($(cells[i]), 0);
+    }
+}
+
+function onPickerTileClicked() {
+    currentPickerIndex = $(this).data('index');
+
+    $('.btn-picker').removeClass('btn-picker-selected');
+    $(this).addClass('btn-picker-selected');
+}
 
 function setCell(cell, index) {
     $(cell).html(tiles[index].emjoi);
@@ -39,3 +112,7 @@ function setCell(cell, index) {
 
     $(cell).data('index', index);
 }
+
+$(document).ready(function () {
+    main();
+});
