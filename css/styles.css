@@ -1,0 +1,65 @@
+html, body
+{
+    height: 100%;
+}
+
+.container-fluid {
+    height: 100%;
+    padding: 0;
+    background-color: #FFBDF8;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.nav-link {
+    color: white;
+}
+
+.grid-row {
+    width: 100%;
+    height: 25%;
+    float: left;
+}
+
+.grid-cell-container {
+    width: 25%;
+    height: 100%;
+    float: left;
+
+    padding: 2px;
+}
+.grid-cell {
+    width: 100%;
+    height: 100%;
+
+    background-color: #7C79EF;
+    float: left;
+
+    border-radius: 25px;
+    border: solid 5px #CC5BBF;
+
+    font-size: 7vw;
+    text-align: center;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.fg-yellow {
+    background-color: #FFA61F;
+}
+
+.fg-blue {
+    color: #3FDBDA;
+}
+
+.fg-pink {
+    color: #F63BA2;
+}
