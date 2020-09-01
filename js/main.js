@@ -11,7 +11,7 @@ var tiles = [
 var pickerMode = "PICKER";
 var toggleMode = "TOGGLE";
 
-var mode = toggleMode;
+var mode = pickerMode;
 
 var currentPickerIndex = 0;
 
